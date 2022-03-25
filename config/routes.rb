@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/new'
 
+  get 'users/new'
 
   root'static_pages#home'
   # get'home'=>'static_pages#home'
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get'about'=>'static_pages#about'
   get'contact'=>'static_pages#contact'
   get'signup'=>'users#new'
-
+  resources :users
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
