@@ -172,3 +172,25 @@ input {
         color: $state-danger-text;
     }
 }
+.checkbox {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    span {
+        margin-left: 20px;
+        font-weight: normal;
+    }
+}
+#session_remember_me {
+    width: auto;
+    margin-left: 0;
+}
+// button_to logout
+.btn_logout {
+    border: none;
+    background: #fff;
+    width: 100%;
+    color: red;
+    &:hover {
+        color: rgb(250, 87, 87);
+    }
+}
