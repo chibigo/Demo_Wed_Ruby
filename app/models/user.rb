@@ -12,17 +12,20 @@ class User < ApplicationRecord
         (?=.*\d)           # Must contain a digits
         (?=.*[A-Z])        # Must contain an upper case character
     /x
-    validates :password,length: {:within => 8..40}, format: { with: PASSWORD_FORMAT }
+    validates :password,length: {:within => 8..40}, format: { with: PASSWORD_FORMAT }, allow_blank: true
 
-    # Returns the hash digest of the given string.
-    def User.digest(string)
-        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-        BCrypt::Password.create(string,cost: cost)
-    end
+    class << self
+        # Returns the hash digest of the given string.
+        def digest(string)
+            cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+            BCrypt::Password.create(string,cost: cost)
+        end
 
-    # Returns a random token.
-    def User.new_token 
-        SecureRandom.urlsafe_base64
+        # Returns a random token.
+        def new_token 
+            SecureRandom.urlsafe_base64
+        end
+
     end
 
     # Remembers a user in the database for use in persistent sessions.
