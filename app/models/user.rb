@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_many :microposts ,dependent: :destroy
     
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save :downcase_email
@@ -55,6 +56,7 @@ class User < ApplicationRecord
         update_attribute(:activated_at, Time.zone.now)
     end
 
+    
     # Sends activation email.
     def send_activation_email
         UserMailer.account_activation(self).deliver_now
@@ -75,16 +77,23 @@ class User < ApplicationRecord
     def password_reset_expired?
         reset_sent_at < 2.hours.ago
     end
-    private
-    # Converts email to all lower-case.
-    def downcase_email
-        self.email = email.downcase
+
+    # See "Following users" for the full implementation.
+    def feed
+        Micropost.where("user_id = ?",id)
     end
 
-    # Creates and assigns the activation token and digest.
-    def create_activation_digest
-        self.activation_token = User.new_token
-        self.activation_digest = User.digest(activation_token)
-    end
+
+    private
+        # Converts email to all lower-case.
+        def downcase_email
+            self.email = email.downcase
+        end
+
+        # Creates and assigns the activation token and digest.
+        def create_activation_digest
+            self.activation_token = User.new_token
+            self.activation_digest = User.digest(activation_token)
+        end
 
 end
