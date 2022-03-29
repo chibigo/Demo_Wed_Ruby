@@ -7,9 +7,8 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: "Account activation"
   end
 
-  def password_reset
-    @greeting = "Welcome to Ruby"
-
-    mail to: "viet2000yyy@gmail.com"
+  def password_reset(user)
+    @user = user
+    mail to: user.email, subject: "Password reset"
   end
 end
