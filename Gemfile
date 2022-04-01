@@ -16,6 +16,10 @@ gem'bootstrap-will_paginate'
 gem "image_processing"
 gem "mini_magick"
 gem "active_storage_validations"
+
+group :development, :test do
+  gem "byebug", platforms:[:mri, :mingw, :x64_mingw]
+end
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

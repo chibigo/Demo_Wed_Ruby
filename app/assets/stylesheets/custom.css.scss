@@ -288,3 +288,33 @@ span.picture {
         color: #333;
     }
 }
+
+
+// Form comment - comment reply
+.btn_click{
+    display: flex;
+}
+.reply .btn_reply{
+    display: flex;
+    flex-direction: row;
+}
+.form_comment{
+    padding: 4px 0;
+    border-top: 1px solid #e8e8e8;
+    &:first-child{
+        border:none;
+    }
+    .form_comment-body{
+        margin-top: 4px;
+    }
+    .btn-reply{
+        margin-top: 8px;
+        margin-left: 8px;
+    }
+}
+.reply{
+    margin:10px 0 4px 50px;
+}
+.reply-body{
+    word-break: break-all;
+}

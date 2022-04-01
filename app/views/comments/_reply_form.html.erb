@@ -1,0 +1,14 @@
+<div class="card my-1">
+  <div class="card-body">
+    <%= form_with(model: [@micropost, @comment]) do |f| %>
+      <%= f.hidden_field :parent_id %>
+      <%= f.hidden_field :micropost_id, :value => @micropost.id %>
+      <%= f.hidden_field :user_id, :value => @micropost.user.id %>
+      <div class="form-group">
+        <%= f.text_area :body, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', micropost_path(@micropost), class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+</div>
