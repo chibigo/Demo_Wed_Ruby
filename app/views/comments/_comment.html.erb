@@ -1,5 +1,5 @@
 <% unless comment.parent_id || !comment.persisted? %>
-  <div id="reply-form-<%= comment.id %>" class="form_comment">
+  <div  class="form_comment">
     <%= link_to gravatar_for(comment.user, size: 40), comment.user %>
     <span class="form_comment-user">
       <%= link_to comment.user.name, comment.user %>
@@ -15,6 +15,8 @@
       <%= button_tag 'Reply', class: 'btn btn-primary btn-sm btn-reply',
       data: {id: @micropost.id, parent_id: comment.id} %>
       <%= button_to 'Delete', comment, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+    </div>
+    <div id="reply-form-<%= comment.id %>" class="reply_form_id">
     </div>
     <% if comment.replies.any? %>
       <% comment.replies.each do |reply| %>

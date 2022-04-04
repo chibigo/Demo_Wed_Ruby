@@ -64,7 +64,7 @@ p {
 footer {
     margin-top: 45px;
     padding-top: 5px;
-    border-top: 1px solid#eaeaea;
+    border-top: 1px solid #eaeaea;
     color: $light-gray;
     a {
         color: #555;
@@ -244,6 +244,11 @@ input {
         img {
             display: block;
             padding: 5px 0;
+            width: 100px;
+            image-rendering: pixelated;
+            object-fit: contain;
+            
+
         }
     }
     .timestamp {
@@ -289,7 +294,37 @@ span.picture {
     }
 }
 
+// show micropost
 
+.showMicropost 
+{   
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    .showMicropost_user a{
+        text-decoration: none;
+    }
+    .showMicropost_content{
+        margin: 8px 0 ;
+        word-break: break-all;
+    }
+    .showMicropost_img {
+        display: flex;
+        justify-content: center;
+        img{
+            width: 600px ;
+            height: 400px;
+            image-rendering: pixelated;
+            object-fit: contain;
+        }
+    }
+    .showMicropost_timestamp{
+        margin-top: 8px;
+    }
+    .showMicropost_btn{
+        top: -16px
+    }
+}
 // Form comment - comment reply
 .btn_click{
     display: flex;
@@ -317,4 +352,7 @@ span.picture {
 }
 .reply-body{
     word-break: break-all;
+}
+.reply_form_id{
+    margin-top: 4px;
 }
