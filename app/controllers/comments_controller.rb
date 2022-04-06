@@ -16,6 +16,20 @@ class CommentsController < ApplicationController
     @micropost = Micropost.find(params[:micropost_id])
     @comment = @micropost.comments.create(parent_id: params[:parent_id])
   end
+  
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      # Handle a successful update.
+      flash[:success] = "Updated successfully"
+      redirect_to request.referrer || root_url
+    else
+      render 'edit'
+    end
+  end
 
   def destroy
     @comment = Comment.find(params[:id])

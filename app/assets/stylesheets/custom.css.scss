@@ -131,6 +131,42 @@ aside {
 .gravatar_edit {
     margin-top: 15px;
 }
+.stats {
+    overflow: auto;
+    margin-top: 0;
+    margin-left: 5px;
+    padding: 0;
+    a {
+        float: left;
+        padding: 0 10px;
+        border-left: 1px solid $gray-lighter;
+        color: gray;
+        &:first-child {
+            padding-left: 0;
+            border: 0;
+        }
+        &:hover {
+            text-decoration: none;
+            color: blue;
+        }
+    }
+    strong {
+        display: block;
+    }
+}
+.user_avatars {
+    overflow: auto;
+    margin-top: 10px;
+    .gravatar {
+        margin: 1px 1px;
+    }
+    a {
+        padding: 0;
+    }
+}
+.users.follow {
+    padding: 0;
+}
 /*forms*/
 input,
 textarea,
@@ -247,20 +283,32 @@ input {
             width: 100px;
             image-rendering: pixelated;
             object-fit: contain;
-            
-
         }
     }
     .timestamp {
         color: $gray-light;
         display: block;
         margin-left: 60px;
+        a {
+            text-decoration: none;
+        }
     }
     .gravatar {
         float: left;
         margin-right: 10px;
         margin-top: 5px;
     }
+    .card_show_comment {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+}
+.comment-group {
+    border: 1px solid #e7e7e7;
+    padding: 8px;
+    margin-top: 4px;
 }
 aside {
     textarea {
@@ -293,66 +341,78 @@ span.picture {
         color: #333;
     }
 }
+.btn_dangerous {
+    background: rgb(201, 1, 1);
+}
 
 // show micropost
 
-.showMicropost 
-{   
-    display: flex;
-    flex-direction: column;
+.showMicropost {
+    width: 800px;
+    margin: auto;
     list-style: none;
-    .showMicropost_user a{
+    .showMicropost_user a {
         text-decoration: none;
     }
-    .showMicropost_content{
-        margin: 8px 0 ;
+    .showMicropost_content {
+        margin: 8px 0;
         word-break: break-all;
     }
     .showMicropost_img {
         display: flex;
         justify-content: center;
-        img{
-            width: 600px ;
-            height: 400px;
+        img {
+            max-width: 600px;
             image-rendering: pixelated;
             object-fit: contain;
+            margin-bottom: 32px;
         }
     }
-    .showMicropost_timestamp{
+    .showMicropost_timestamp {
         margin-top: 8px;
     }
-    .showMicropost_btn{
-        top: -16px
+    .showMicropost_btn {
+        top: -16px;
     }
 }
 // Form comment - comment reply
-.btn_click{
+.btn_click {
     display: flex;
 }
-.reply .btn_reply{
-    display: flex;
-    flex-direction: row;
+.reply {
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
+    margin: 4px;
+    padding: 8px;
+    .btn_reply {
+        display: flex;
+        flex-direction: row;
+    }
 }
-.form_comment{
+.form_comment {
     padding: 4px 0;
     border-top: 1px solid #e8e8e8;
-    &:first-child{
-        border:none;
+    &:first-child {
+        border: none;
     }
-    .form_comment-body{
+    .form_comment-body {
         margin-top: 4px;
     }
-    .btn-reply{
+    .btn-reply {
+        margin-top: 8px;
+        margin-left: 8px;
+    }
+    .btn-update {
         margin-top: 8px;
         margin-left: 8px;
     }
 }
-.reply{
-    margin:10px 0 4px 50px;
+.reply {
+    margin: 10px 0 4px 50px;
 }
-.reply-body{
+.reply-body {
     word-break: break-all;
 }
-.reply_form_id{
+.reply_form_id {
     margin-top: 4px;
 }

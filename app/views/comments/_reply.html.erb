@@ -7,10 +7,25 @@
     <%= time_ago_in_words(reply.created_at) %> ago.
   </span>
   <div class="reply-body">
-    <strong>Comment:</strong>
+    <strong><%= reply_comment(reply)%>:</strong>
     <%= reply.body %>
   </div>
   <div class="btn_reply">
-    <%= button_to 'Delete', reply, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+    <%= button_tag 'Reply', class: 'btn btn-primary btn-sm btn-reply',
+      data: {id: reply.micropost.id, parent_id: reply.id} %>
+    <% if current_user.id === reply.user_id%>
+      <%= button_tag 'Update', class: 'btn btn-primary btn-sm btn-update',
+      data: {comment_id: reply.id} %>
+    <%end%>
+    <% if reply.micropost.user_id === current_user.id || current_user.id === reply.user_id %>
+      <%= button_to 'Delete', reply, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+    <%end%>
   </div>
+  <div id="reply-form-<%= reply.id %>" class="reply_form_id">
+  </div>
+  <% if reply.replies.any? %>
+    <% reply.replies.each do |reply| %>
+      <%= render partial: 'comments/reply', locals: { reply: reply } %>
+    <% end %>
+  <% end %>
 </div>

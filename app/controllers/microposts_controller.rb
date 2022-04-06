@@ -13,7 +13,11 @@ class MicropostsController < ApplicationController
         end
     end
     def show
-        @micropost = Micropost.find(params[:id])
+        if logged_in?
+            @micropost = Micropost.find(params[:id])
+        else 
+            redirect_to login_path
+        end
     end
     def destroy
         @micropost.destroy

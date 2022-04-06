@@ -6,13 +6,14 @@
   <span class="content">
     <%= micropost.content %>
     <%= image_tag micropost.picture.url if micropost.picture?%>
-    <%# <%= image_tag micropost.display_image if micropost.image.attached?%>
   </span>
   <span class = "timestamp">
     Posted <%= time_ago_in_words(micropost.created_at)%> ago.
     <% if current_user?(micropost.user) %>
-      <%= button_to "Delete", micropost,method: :delete,data: {confirm:"You sure?"}, class:"btn_Delete"%>
+      <%= button_to "Delete", micropost,method: :delete,data: {confirm:"You sure?"}, class:"btn_Delete btn_dangerous"%>
     <%end%>
-    <%= link_to "Show Comment", micropost,class:"btn_Delete"%>
+    <%= link_to "Show Comment #{micropost_count(micropost.comments)}", micropost,class:"btn_Delete"%>
+    <%# <%= button_tag 'Comment', class: "btn_Delete btn_comment",
+      data: {id: micropost.id} %>
   </span>
 </li>

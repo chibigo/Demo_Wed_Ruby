@@ -1,0 +1,7 @@
+<%= form_with model: @comment, method: :put do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, value: @comment.body, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', micropost_path(@comment.micropost), class: 'btn btn-secondary' %>
+<% end %>

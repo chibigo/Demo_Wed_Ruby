@@ -14,7 +14,13 @@
     <div class="btn_click">
       <%= button_tag 'Reply', class: 'btn btn-primary btn-sm btn-reply',
       data: {id: @micropost.id, parent_id: comment.id} %>
-      <%= button_to 'Delete', comment, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+      <% if current_user.id === comment.user_id %>
+        <%= button_tag 'Update', class: 'btn btn-primary btn-sm btn-update',
+      data: {comment_id: comment.id} %>
+      <%end%>
+      <% if current_user.id === comment.user_id || @micropost.user_id === current_user.id%>
+        <%= button_to 'Delete', comment, method: :delete, data: {confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm btn-reply' %>
+      <%end%>
     </div>
     <div id="reply-form-<%= comment.id %>" class="reply_form_id">
     </div>
